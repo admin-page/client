@@ -56,7 +56,7 @@ function Header() {
         <Menu>
         <p>Home</p>
 
-        <p>Product</p>
+        <p>Rumah Dijual</p>
         </Menu>
         
         <Button>Sign In</Button>
