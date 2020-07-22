@@ -80,8 +80,8 @@ function Login() {
             />
           </InputGroup>
 
-          <Button>Sign Up</Button>
-          <span>Don't have an account? Sign in</span>
+          <Button>Sign In</Button>
+          <span>Don't have an account? Sign up</span>
         </Form>
 
         <Promo>
