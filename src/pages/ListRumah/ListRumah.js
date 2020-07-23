@@ -24,14 +24,6 @@ function ListRumah() {
       <h1>Rumah Dijual</h1>
       <Container1>
         <CardListRumah />
-        <CardListRumah />
-        <CardListRumah />
-        <CardListRumah />
-        <CardListRumah />
-        <CardListRumah />
-        <CardListRumah />
-        <CardListRumah />
-        <CardListRumah />
       </Container1>
     </Container>
   );

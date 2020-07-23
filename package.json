@@ -10,6 +10,9 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.5.0",
+    "filestack-react": "^3.1.0",
+    "jwt-decode": "^2.2.0",
+    "jwt-simple": "^0.5.6",
     "mdbreact": "^4.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -20,9 +23,11 @@
     "react-slick": "^0.27.0",
     "reactstrap": "^8.5.1",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "sweetalert2": "^9.17.0"
   },
   "scripts": {
     "start": "react-scripts start",

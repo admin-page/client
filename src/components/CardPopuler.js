@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-
-
+import { fetchHouse } from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Card = styled.div`
   display: flex;
   flex-direction: column;
   width: 30%;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 `;
 
 const CardHead = styled.div`
@@ -24,29 +24,47 @@ const CardImg = styled.div`
     width: 100%;
   }
 `;
+
 function CardPopuler() {
+  const dispatch = useDispatch();
+  const listHouse = useSelector((state) => state.houses.houses);
+  useEffect(() => {
+    dispatch(fetchHouse());
+    //eslint-disable-next-line
+  }, []);
+
   return (
-    <Card>
-      <CardHead>
-        <img src="https://tpc.googlesyndication.com/simgad/11858561715492708884?"
-        alt="" />
-      </CardHead>
-      <CardImg>
-        <img src="https://tpc.googlesyndication.com/simgad/1992713735562351096?" 
-        alt=""/>
-      </CardImg>
-      <div>
-        <div>
-          <h3>Summarecon Mutiara Makassar</h3>
-        </div>
-        <div>
-          <div>
-            Blue Crystal Residence dibangun dengan mengusung konsep arsitektur
-            tropis kontemporer
-          </div>
-        </div>
-      </div>
-    </Card>
+    <>
+      {listHouse !== null &&
+        listHouse.map((getData) => {
+          return (
+            <Card key={getData._id}>
+              <CardHead>
+                <img
+                  src="https://tpc.googlesyndication.com/simgad/11858561715492708884?"
+                  alt=""
+                />
+              </CardHead>
+              <CardImg>
+                <img
+                  src="https://tpc.googlesyndication.com/simgad/1992713735562351096?"
+                  alt=""
+                />
+              </CardImg>
+              <div>
+                <div>
+                  <h3>{getData.houseTitle}</h3>
+                </div>
+                <div>
+                  <div>
+                    <p>{getData.desc}</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          );
+        })}
+    </>
   );
 }
 
