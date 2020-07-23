@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ButtonHeader from './ButtonHeader'
 
 
 
@@ -30,19 +31,7 @@ p{margin-right:20px;
 }
 `
 
-const Button = styled.button`
-background-color: lightgreen;
-border-radius:10px;
-width:80px;
-font-size:14px;
-border:none;
-height:30px;
-color: white;
-margin:10px;
-:hover{
-  background-color:lightblue;
-}
-`
+
 
 function Header() {
   
@@ -58,10 +47,8 @@ function Header() {
 
         <p>Rumah Dijual</p>
         </Menu>
-        
-        <Button>Sign In</Button>
-        <span>or</span>
-        <Button>Sign up</Button>        
+        <ButtonHeader/>
+              
     </Nav>
   );
 }
