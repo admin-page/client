@@ -63,7 +63,7 @@ const userLogin = (formData, history) => async () => {
       }, 3000)
       
       ;
-    } else if(response.status === 403){
+    } else {
       Swal.fire({
         icon: "error",
         title: "Forbidden",
@@ -71,7 +71,11 @@ const userLogin = (formData, history) => async () => {
       });
     }
   } catch (error) {
-    console.error(error);
+    Swal.fire({
+      icon: "error",
+      title: "Forbidden",
+      text: "Wrong Email or Password"
+    });;
   }
 };
 
