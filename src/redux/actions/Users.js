@@ -1,6 +1,6 @@
 import { GET_USER_LOGIN, GET_USER_REGISTER } from "./types";
 import Swal from "sweetalert2";
-import jwt_decode from "jwt-decode";
+import jwt_decode from 'jwt-decode'
 
 const LOGIN = "LOGIN";
 const REGISTER = "REGISTER";
@@ -25,15 +25,20 @@ const userLogin = (formData, history) => async () => {
 
     const response = await fetch(url, options);
     const result = await response.json();
-    const dataUser = jwt_decode(result.result);
+    const dataUser = jwt_decode(result.result)
 
     if (response.status === 200 && dataUser.status !== "ACTIVE") {
+      localStorage.clear();
       Swal.fire({
         icon: "error",
         title: "Forbidden",
-        text: "Your Account isn't Active, call administration for Activation ",
+        text: "Your Account isn't Active, please contact administration for Activation ",
       });
-    } else if (response.status === 200 && dataUser.status === "ACTIVE") {
+    
+
+  
+      
+    }else if (response.status === 200 && dataUser.status === "ACTIVE") {
       localStorage.setItem("token", result.result);
 
       const Toast = Swal.mixin({
@@ -54,17 +59,25 @@ const userLogin = (formData, history) => async () => {
       });
 
       setTimeout(() => {
-        history.push("/userprofile");
-      }, 3000);
+        history.push("/userprofile")
+        window.location.reload();
+      }, 3000)
+      
+      ;
     } else {
       Swal.fire({
         icon: "error",
         title: "Forbidden",
-        text: result.message,
+        text: "wrong email or Password"
       });
     }
   } catch (error) {
-    console.error(error);
+    localStorage.clear();
+    Swal.fire({
+      icon: "error",
+      title: "Forbidden",
+      text: "Wrong Email or Password"
+    });;
   }
 };
 
@@ -81,6 +94,13 @@ const registerUser = (formData, history) => async () => {
 
     const response = await fetch(url, options);
     const result = await response.json();
+    for(let key in formData){
+      if(formData[key] ===""){
+        delete formData[key]
+      }
+    }
+
+
 
     if (response.status === 200) {
       localStorage.setItem("token", result.result);
@@ -117,7 +137,9 @@ const registerUser = (formData, history) => async () => {
   }
 };
 
+
 export {
+ 
   userLogin,
   GET_USER_LOGIN,
   LOGIN,
