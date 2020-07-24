@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchToken } from "../redux/actions";
 
 const Button = styled.button`
   background-color: lightgreen;
@@ -43,25 +44,30 @@ String.prototype.toTitleCase = function () {
 
 function ButtonHeader() {
   const history = useHistory();
-  const token = localStorage.getItem("token");
-  let tokenDecoded = null;
-  
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.authorization.authorization);
+
+  useEffect(() => {
+    dispatch(fetchToken());
+    //eslint-disable-next-line
+  }, []);
+
   const logout = () => {
+    
     Swal.fire({
       icon: "success",
       title: "Terimakasih",
     });
     localStorage.clear();
     history.push("/");
+    
+     setTimeout(() => {
+      window.location.reload();
+      }, 3000);
   };
 
-  if (token !== null) {
-    // eslint-disable-next-line
-    tokenDecoded = jwt_decode(token);
-  }
-
-  return (
-    <div>
+  const display = (
+    <>
       {token !== null ? (
         <>
           <i className="fa fa-1x fa-user" aria-hidden="true">
@@ -70,7 +76,7 @@ function ButtonHeader() {
               to="userprofile"
               style={{ textDecoration: "none", color: "black" }}
             >
-              {`${tokenDecoded.fullname}`.toTitleCase()}
+              {`${token.fullname}`.toTitleCase()}
             </Link>
           </i>
 
@@ -80,17 +86,18 @@ function ButtonHeader() {
         </>
       ) : (
         <>
-          <Link exact path to="/login" style={{ textDecoration: "none" }}>
+          <Link  to="/login" style={{ textDecoration: "none" }}>
             <Button>Sign In</Button>
           </Link>
 
-          <Link exact path to="/register" style={{ textDecoration: "none" }}>
+          <Link  to="/register" style={{ textDecoration: "none" }}>
             <Button>Sign up</Button>
           </Link>
         </>
       )}
-    </div>
+    </>
   );
+  return <div>{display}</div>;
 }
 
 export default ButtonHeader;

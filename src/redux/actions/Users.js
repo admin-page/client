@@ -55,8 +55,13 @@ const userLogin = (formData, history) => async () => {
       });
 
       setTimeout(() => {
-        history.push("/userprofile");
-      }, 3000);
+        history.push("/userprofile")
+        window.location.reload();
+      }, 3000)
+      
+      
+      
+      ;
     } else {
       Swal.fire({
         icon: "error",
@@ -117,7 +122,6 @@ const registerUser = (formData, history) => async () => {
     console.error(error);
   }
 };
-
 
 
 export {

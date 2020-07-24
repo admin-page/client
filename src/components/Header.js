@@ -37,8 +37,6 @@ function Header() {
     <Nav>
       <MenuIcon>
         <Link
-          exact
-          path
           to="/"
           style={{ textDecoration: "none", color: "black" }}
         >
@@ -48,18 +46,13 @@ function Header() {
 
       <Menu>
         <Link
-          exact
-          path
           to="/"
           style={{ textDecoration: "none", color: "black" }}
         >
           <p>Home</p>
         </Link>
 
-        <Link
-          exact
-          path
-          to="/rumah-dijual"
+        <Link to="/rumah-dijual"
           style={{ textDecoration: "none", color: "black" }}
         >
           <p>Rumah Dijual</p>

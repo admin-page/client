@@ -6,6 +6,7 @@ export const fetchProfile = () => async (dispatch) => {
   const tokenDecoded = jwt_decode(token)
   const id = tokenDecoded.id
   
+  console.log(id)
   let url = `https://rumahku-com.herokuapp.com/users/${id}`;
 
   
