@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 const Img = styled.img`
   height: 400px;
+  object-fit: cover;
 `;
 
 function CarouselSection() {
