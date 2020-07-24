@@ -42,9 +42,7 @@ function Footer() {
         </MenuIcon>
       </Container1>
       <Container2>
-        <p>Tentang Kami</p>
-        <p>Kebijakan Privasi</p>
-        <p>Syarat Pengunaan</p>
+        <i class="fa fa-copyright" aria-hidden="true"> rumahku.com 2020</i>
       </Container2>
     </SectionFooter>
   );
