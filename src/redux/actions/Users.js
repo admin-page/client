@@ -28,6 +28,7 @@ const userLogin = (formData, history) => async () => {
     const dataUser = jwt_decode(result.result)
 
     if (response.status === 200 && dataUser.status !== "ACTIVE") {
+      localStorage.clear();
       Swal.fire({
         icon: "error",
         title: "Forbidden",
@@ -71,6 +72,7 @@ const userLogin = (formData, history) => async () => {
       });
     }
   } catch (error) {
+    localStorage.clear();
     Swal.fire({
       icon: "error",
       title: "Forbidden",
