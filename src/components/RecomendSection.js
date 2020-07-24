@@ -24,9 +24,6 @@ function RecomendSection() {
         <h1>Rekomendasi</h1>
       <Container1>
         <CardRecomend />
-        <CardRecomend />
-        <CardRecomend />
-        <CardRecomend />
       </Container1>
     </Container>
   );

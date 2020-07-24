@@ -10,6 +10,7 @@ const SectionFooter = styled.div`
   width: 100%;
   background-color:black;
   color:white;
+  margin-top:40px;
 `;
 const Container1 = styled.div`
   width: 30%;

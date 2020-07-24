@@ -1,6 +1,7 @@
 import React from "react";
-import CardPopuler from "./CardPopuler";
-import styled from "styled-components";
+import styled from 'styled-components'
+
+import CardListRumah from "../../components/CardListRumah";
 
 const Container = styled.div`
   display: flex;
@@ -17,18 +18,15 @@ const Container1 = styled.div`
   align-items: center;
   justify-content: space-evenly;
 `;
-
-
-
-function PopulerSection() {
+function ListRumah() {
   return (
     <Container>
-      <h1>Populer</h1>
+      <h1>Rumah Dijual</h1>
       <Container1>
-        <CardPopuler />
+        <CardListRumah />
       </Container1>
     </Container>
   );
 }
 
-export default PopulerSection;
+export default ListRumah;
