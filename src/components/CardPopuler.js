@@ -47,7 +47,7 @@ function CardPopuler() {
               </CardHead>
               <CardImg>
                 <img
-                  src="https://tpc.googlesyndication.com/simgad/1992713735562351096?"
+                  src={getData.image_url}
                   alt=""
                 />
               </CardImg>
