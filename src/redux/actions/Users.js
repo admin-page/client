@@ -27,7 +27,7 @@ const userLogin = (formData, history) => async () => {
     const result = await response.json();
     const dataUser = jwt_decode(result.result)
 
-    if (response.status === 200 && dataUser.status === "PENDING") {
+    if (response.status === 200 && dataUser.status !== "ACTIVE") {
       Swal.fire({
         icon: "error",
         title: "Forbidden",
@@ -63,11 +63,11 @@ const userLogin = (formData, history) => async () => {
       }, 3000)
       
       ;
-    } else {
+    } else if(response.status === 403){
       Swal.fire({
         icon: "error",
         title: "Forbidden",
-        text: result.message,
+        text: "wrong email or Password"
       });
     }
   } catch (error) {
