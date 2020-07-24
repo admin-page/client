@@ -26,7 +26,6 @@ const userLogin = (formData, history) => async () => {
     const response = await fetch(url, options);
     const result = await response.json();
     const dataUser = jwt_decode(result.result)
-    console.log(dataUser)
 
     if (response.status === 200 && dataUser.status === "PENDING") {
       Swal.fire({
@@ -34,13 +33,9 @@ const userLogin = (formData, history) => async () => {
         title: "Forbidden",
         text: "Your Account isn't Active, please contact administration for Activation ",
       });
+    
 
-    }else if (response.status === 200 && dataUser.status === "REJECTED") {
-      Swal.fire({
-        icon: "error",
-        title: "Forbidden",
-        text: "Your Account is rejected, please contact administration for more information ",
-      });
+  
       
     }else if (response.status === 200 && dataUser.status === "ACTIVE") {
       localStorage.setItem("token", result.result);
@@ -66,8 +61,6 @@ const userLogin = (formData, history) => async () => {
         history.push("/userprofile")
         window.location.reload();
       }, 3000)
-      
-      
       
       ;
     } else {
@@ -95,6 +88,13 @@ const registerUser = (formData, history) => async () => {
 
     const response = await fetch(url, options);
     const result = await response.json();
+    for(let key in formData){
+      if(formData[key] ===""){
+        delete formData[key]
+      }
+    }
+
+
 
     if (response.status === 200) {
       localStorage.setItem("token", result.result);
