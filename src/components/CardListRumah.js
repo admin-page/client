@@ -25,18 +25,7 @@ const CardImg = styled.div`
   }
 `;
 
-const Button = styled.button`
-  border-radius: 5px;
-  background-color: transparent;
-  border: lightgreen 1px solid;
-  padding: 5px;
-  width: 80px;
-  margin-bottom: 10px;
-  :hover {
-    background-color: lightgreen;
-    cursor: pointer;
-  }
-`;
+
 const CardBody = styled.div`
   padding: 10px;
   box-sizing: border-box;
@@ -84,7 +73,6 @@ function CardListRumah() {
                 <div>
                   <p>{getData.location}</p>
                 </div>
-                <Button>Detail</Button>
               </CardBody>
             </Card>
           );
