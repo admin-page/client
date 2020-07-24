@@ -32,9 +32,17 @@ const userLogin = (formData, history) => async () => {
       Swal.fire({
         icon: "error",
         title: "Forbidden",
-        text: "Your Account isn't Active, call administration for Activation ",
+        text: "Your Account isn't Active, please contact administration for Activation ",
       });
-    } else if (response.status === 200 && dataUser.status === "ACTIVE") {
+
+    }else if (response.status === 200 && dataUser.status === "REJECTED") {
+      Swal.fire({
+        icon: "error",
+        title: "Forbidden",
+        text: "Your Account is rejected, please contact administration for more information ",
+      });
+      
+    }else if (response.status === 200 && dataUser.status === "ACTIVE") {
       localStorage.setItem("token", result.result);
 
       const Toast = Swal.mixin({
