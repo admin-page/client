@@ -1,0 +1,4 @@
+export const GET_USER_LOGIN = 'GET_USER_LOGIN';
+export const GET_USER_REGISTER = 'GET_USER_REGISTER';
+export const GET_HOUSES = 'GET_HOUSES'
+export const GET_PROFILES = 'GET_PROFILES'

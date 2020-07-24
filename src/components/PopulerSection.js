@@ -26,11 +26,6 @@ function PopulerSection() {
       <h1>Populer</h1>
       <Container1>
         <CardPopuler />
-        <CardPopuler />
-        <CardPopuler />
-        <CardPopuler />
-        <CardPopuler />
-        <CardPopuler />
       </Container1>
     </Container>
   );

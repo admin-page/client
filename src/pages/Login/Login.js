@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { userLogin } from "../../redux/actions";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
@@ -24,21 +27,21 @@ const Form = styled.form`
 `;
 
 const InputGroup = styled.div`
-display:flex;
-flex-direction:column;
-width:80%;
-text-align:center;`
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  text-align: center;
+`;
 
 const Input = styled.input`
   height: 40px;
   border-radius: 10px;
   background-color: #c5d1c8;
   border: none;
-  padding:14px;
-  box-sizing:border-box;
-  margin:10px;
+  padding: 14px;
+  box-sizing: border-box;
+  margin: 10px;
 `;
-
 
 const Promo = styled.div`
   width: 40%;
@@ -54,34 +57,64 @@ const Button = styled.button`
   border-radius: 8px;
   border: 0px;
   font-weight: bold;
-  color:white;
-  :hover{
-      background-color: lightblue;
+  color: white;
+  :hover {
+    background-color: lightblue;
   }
 `;
 
 function Login() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(userLogin(formData, history));
+  };
   return (
     <Container>
-      <h1>Login</h1>
       <Container1>
-        <Form>
+        <Form onSubmit={handleSubmit}>
+          <h1>Login</h1>
           <InputGroup>
-            <label for="email">Email</label>
-            <Input type="email" name="email" placeholder="Enter Email Address" />
+            <label>Email</label>
+            <Input
+              type="email"
+              name="email"
+              placeholder="Enter Email Address"
+              onChange={handleChange}
+              value={formData.email}
+            />
           </InputGroup>
           <InputGroup>
-            <label for="password">Password</label>
+            <label>Password</label>
             <Input
-              id=""
               type="password"
               name="password"
               placeholder="Enter Password"
+              onChange={handleChange}
+              value={formData.password}
             />
           </InputGroup>
 
-          <Button>Sign In</Button>
-          <span>Don't have an account? Sign up</span>
+          <Button type="submit">Sign In</Button>
+          <span>
+            Don't have an account?
+            <Link exact path to="/register" style={{ textDecoration: "none" }}>
+              <span>Sign Up</span>
+            </Link>
+          </span>
         </Form>
 
         <Promo>
