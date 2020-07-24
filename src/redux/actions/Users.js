@@ -1,6 +1,6 @@
 import { GET_USER_LOGIN, GET_USER_REGISTER } from "./types";
 import Swal from "sweetalert2";
-import jwt_decode from 'jwt-decode'
+import jwt_decode from "jwt-decode";
 
 const LOGIN = "LOGIN";
 const REGISTER = "REGISTER";
@@ -25,10 +25,9 @@ const userLogin = (formData, history) => async () => {
 
     const response = await fetch(url, options);
     const result = await response.json();
-    const dataUser = jwt_decode(result.result)
-    console.log(dataUser)
+    const dataUser = jwt_decode(result.result);
 
-    if (response.status === 200 && dataUser.status === "PENDING") {
+    if (response.status === 200 && dataUser.status !== "ACTIVE") {
       Swal.fire({
         icon: "error",
         title: "Forbidden",
@@ -118,10 +117,7 @@ const registerUser = (formData, history) => async () => {
   }
 };
 
-
-
 export {
- 
   userLogin,
   GET_USER_LOGIN,
   LOGIN,
