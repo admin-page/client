@@ -55,7 +55,7 @@ const userLogin = (formData, history) => async () => {
       });
 
       setTimeout(() => {
-        history.push("/profle");
+        history.push("/userprofile");
       }, 3000);
     } else {
       Swal.fire({
@@ -104,7 +104,7 @@ const registerUser = (formData, history) => async () => {
       });
 
       setTimeout(() => {
-        history.push("/profle");
+        history.push("/login");
       }, 3000);
     } else {
       Swal.fire({
@@ -118,17 +118,10 @@ const registerUser = (formData, history) => async () => {
   }
 };
 
-const logout = (history) => async () => {
-  Swal.fire({
-    icon: "success",
-    title: "Terimakasih",
-  });
-  localStorage.removeItem("token");
-  history.push("/");
-};
+
 
 export {
-  logout,
+ 
   userLogin,
   GET_USER_LOGIN,
   LOGIN,

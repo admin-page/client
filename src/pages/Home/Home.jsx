@@ -1,21 +1,18 @@
-import React from 'react'
-import Header from '../../components/Header'
+import React from "react";
 
-import Carousel from '../../components/CarouselSection'
-import Footer from '../../components/Footer'
-import RecomendSection from '../../components/RecomendSection'
-import PopulerSection from '../../components/PopulerSection'
+import Carousel from "../../components/CarouselSection";
+
+import RecomendSection from "../../components/RecomendSection";
+import PopulerSection from "../../components/PopulerSection";
 
 function Home() {
-    return (
-        <div>
-            <Header/>
-            <Carousel/>
-            <RecomendSection/>
-            <PopulerSection/>
-            <Footer/>
-        </div>
-    )
+  return (
+    <div>
+      <Carousel />
+      <RecomendSection />
+      <PopulerSection />
+    </div>
+  );
 }
 
-export default Home
+export default Home;

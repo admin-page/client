@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { userLogin } from "../../redux/actions";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -14,7 +15,6 @@ const Container1 = styled.div`
   display: flex;
   flex-direction: row;
   width: 800px;
-
 `;
 
 const Form = styled.form`
@@ -109,7 +109,12 @@ function Login() {
           </InputGroup>
 
           <Button type="submit">Sign In</Button>
-          <span>Don't have an account? Sign up</span>
+          <span>
+            Don't have an account?
+            <Link exact path to="/register" style={{ textDecoration: "none" }}>
+              <span>Sign Up</span>
+            </Link>
+          </span>
         </Form>
 
         <Promo>

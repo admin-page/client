@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import jwt_decode from "jwt-decode";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const Button = styled.button`
   background-color: lightgreen;
@@ -39,13 +42,22 @@ String.prototype.toTitleCase = function () {
 };
 
 function ButtonHeader() {
+  const history = useHistory();
   const token = localStorage.getItem("token");
   let tokenDecoded = null;
+  
+  const logout = () => {
+    Swal.fire({
+      icon: "success",
+      title: "Terimakasih",
+    });
+    localStorage.clear();
+    history.push("/");
+  };
 
   if (token !== null) {
     // eslint-disable-next-line
-    tokenDecoded = jwt_decode(token)
-    
+    tokenDecoded = jwt_decode(token);
   }
 
   return (
@@ -54,16 +66,27 @@ function ButtonHeader() {
         <>
           <i className="fa fa-1x fa-user" aria-hidden="true">
             {"   "}
-            {`${tokenDecoded.fullname}`.toTitleCase()}
+            <Link
+              to="userprofile"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              {`${tokenDecoded.fullname}`.toTitleCase()}
+            </Link>
           </i>
 
-          <Button2>Log out</Button2>
+          <Button2 type="button" onClick={logout}>
+            Log out
+          </Button2>
         </>
       ) : (
         <>
-          <Button>Sign In</Button>
+          <Link exact path to="/login" style={{ textDecoration: "none" }}>
+            <Button>Sign In</Button>
+          </Link>
 
-          <Button>Sign up</Button>
+          <Link exact path to="/register" style={{ textDecoration: "none" }}>
+            <Button>Sign up</Button>
+          </Link>
         </>
       )}
     </div>

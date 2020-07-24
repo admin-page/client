@@ -4,6 +4,7 @@ import { registerUser } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import ReactFilestack from "filestack-react";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -72,8 +73,8 @@ const ButtonUpload = styled.button`
   border: none;
   box-sizing: border-box;
   margin: 10px;
-  text-align:center;
-  width:95%;
+  text-align: center;
+  width: 95%;
 `;
 
 function Register() {
@@ -168,7 +169,12 @@ function Register() {
           </InputGroup>
 
           <Button type="submit">Sign Up</Button>
-          <span>Alreay have an account? Sign in</span>
+          <span>
+            Alreay have an account?{" "}
+            <Link exact path to="/login" style={{ textDecoration: "none" }}>
+              <span>Sign In</span>
+            </Link>
+          </span>
         </Form>
 
         <Promo>

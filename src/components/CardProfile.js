@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { logout, fetchProfile } from "../redux/actions";
+import { fetchProfile } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
@@ -31,17 +31,7 @@ const CardContent = styled.div`
   justify-content: space-evenly;
 `;
 
-const Button = styled.button`
-width:100px;
-height:30px;
-border-radius:5px;
-color:white;
-border:none;
-background-color:#bb2124;
-:hover{
-  background-color:red;
-  cursor:pointer;
-}`;
+
 function CardProfile() {
   const dispatch = useDispatch();
 
@@ -77,7 +67,7 @@ function CardProfile() {
             {dataProfile.address}
           </i>
         </CardContent>
-        <Button type="button" onClick={logout}>Logout</Button>
+       
       </Container>
     </>
   );
